@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Empréstimos | Biblioteca{% endblock %}
+{% block content %}
+<section class="list-page" aria-labelledby="page-title">
+    <a class="back-link" href="/">← Página inicial</a>
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">CIRCULAÇÃO</p>
+            <h1 id="page-title">Empréstimos</h1>
+            <p class="page-description">Acompanhe as retiradas e devoluções de livros.</p>
+        </div>
+        <p class="record-count"><strong>{{ emprestimos|length }}</strong> registro{{ emprestimos|length|pluralize:"s" }}</p>
+    </div>
+    <div class="table-scroll">
+        <table class="data-table">
+            <thead>
+                <tr><th>Livro</th><th>Usuário</th><th>Retirada</th><th>Devolução</th><th>Situação</th></tr>
+            </thead>
+            <tbody>
+                {% for emprestimo in emprestimos %}
+                <tr>
+                    <td class="primary-cell">{{ emprestimo.livro }}</td>
+                    <td>{{ emprestimo.usuario }}</td>
+                    <td>{{ emprestimo.data_emprestimo|date:"d/m/Y" }}</td>
+                    <td>{% if emprestimo.data_devolucao %}{{ emprestimo.data_devolucao|date:"d/m/Y" }}{% else %}—{% endif %}</td>
+                    <td>
+                        {% if emprestimo.data_devolucao %}
+                        <span class="status status-returned">Devolvido</span>
+                        {% else %}
+                        <span class="status status-open">Em andamento</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td class="empty-state" colspan="5">Nenhum empréstimo registrado ainda.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

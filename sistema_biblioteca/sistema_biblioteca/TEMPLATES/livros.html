@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Livros | Biblioteca{% endblock %}
+{% block content %}
+<section class="list-page" aria-labelledby="page-title">
+    <a class="back-link" href="/">← Página inicial</a>
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">ACERVO</p>
+            <h1 id="page-title">Livros</h1>
+            <p class="page-description">Consulte os títulos cadastrados na biblioteca.</p>
+        </div>
+        <p class="record-count"><strong>{{ livros|length }}</strong> título{{ livros|length|pluralize:"s" }}</p>
+    </div>
+    <div class="table-scroll">
+        <table class="data-table">
+            <thead>
+                <tr><th>Título</th><th>Autor</th><th>Ano</th><th>ISBN</th></tr>
+            </thead>
+            <tbody>
+                {% for livro in livros %}
+                <tr>
+                    <td class="primary-cell">{{ livro.titulo }}</td>
+                    <td>{{ livro.autor }}</td>
+                    <td>{{ livro.ano_publicacao }}</td>
+                    <td>{{ livro.isbn }}</td>
+                </tr>
+                {% empty %}
+                <tr><td class="empty-state" colspan="4">Nenhum livro cadastrado ainda.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Usuários | Biblioteca{% endblock %}
+{% block content %}
+<section class="list-page" aria-labelledby="page-title">
+    <a class="back-link" href="/">← Página inicial</a>
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">LEITORES</p>
+            <h1 id="page-title">Usuários</h1>
+            <p class="page-description">Consulte as pessoas cadastradas na biblioteca.</p>
+        </div>
+        <p class="record-count"><strong>{{ usuarios|length }}</strong> usuário{{ usuarios|length|pluralize:"s" }}</p>
+    </div>
+    <div class="table-scroll">
+        <table class="data-table">
+            <thead>
+                <tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Cadastro</th></tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td class="primary-cell">{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.telefone }}</td>
+                    <td>{{ usuario.data_cadastro|date:"d/m/Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td class="empty-state" colspan="4">Nenhum usuário cadastrado ainda.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

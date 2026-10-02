@@ -1,0 +1,56 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+    <meta charset="UTF-8">
+<html lang="pt-br">
+    <title>Sistema Biblioteca</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">8
+</head>
+<body>
+    <meta name="theme-color" content="#173b35">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <h1>Sistema Biblioteca</h1>
+    
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="Página inicial da Biblioteca">
+            <span class="brand-mark" aria-hidden="true">B</span>
+            <span>Biblioteca</span>
+        </a>
+        <a class="admin-link" href="/admin/">Administração <span aria-hidden="true">↗</span></a>
+    </header>
+
+        <section class="welcome" aria-labelledby="page-title">
+            <p class="eyebrow">GESTÃO DA BIBLIOTECA</p>
+            <h1 id="page-title">Conhecimento em<br><span>boas mãos.</span></h1>
+            <p class="intro">Acesse as ferramentas para organizar o acervo e acompanhar a circulação de livros.</p>
+        </section>
+        <section class="workspace" aria-labelledby="menu-title">
+            <div class="section-heading">
+                <h2 id="menu-title">Menu principal</h2>
+                <span>ESCOLHA UMA ÁREA</span>
+            </div>
+            <nav class="menu" aria-label="Áreas do sistema">
+                <a class="menu-item" href="/livros/">
+                    <span class="item-index">01</span>
+                    <span class="item-copy"><strong>Livros</strong><span>Acervo e disponibilidade</span></span>
+                    <span class="item-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="menu-item" href="/usuarios/">
+                    <span class="item-index">02</span>
+                    <span class="item-copy"><strong>Usuários</strong><span>Leitores cadastrados</span></span>
+                    <span class="item-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="menu-item" href="/emprestimos/">
+                    <span class="item-index">03</span>
+                    <span class="item-copy"><strong>Empréstimos</strong><span>Retiradas e devoluções</span></span>
+                    <span class="item-arrow" aria-hidden="true">↗</span>
+                </a>
+            </nav>
+        </section>
+</body>
+
+    <footer class="site-footer"><span>Sistema de Biblioteca</span><span>Organização para cada página.</span></footer>
+
+</html>
